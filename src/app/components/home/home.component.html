@@ -1,0 +1,19 @@
+
+
+
+<div class="blog-container">
+
+    @for (user of data; track user) {
+
+        <div class="blog-card" >
+            <h3>{{user.title}}</h3>
+            <p>{{user.description}}</p>
+
+            <div class="card-bottom">
+                <a routerLink="/blog/{{user.id}}">View</a>
+            </div>
+        </div>
+    
+    }
+
+</div>

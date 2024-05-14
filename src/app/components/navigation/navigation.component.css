@@ -1,0 +1,41 @@
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 97%;
+    margin: auto;
+    align-items: center;
+    padding: 18px 0px;
+    border-bottom: 1px solid lightgray;
+
+}
+.navbar{
+    /* width: 100%; */
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.navbar ul a {
+    color: black;
+    padding: 0px 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.topbar-container{
+    display: flex;
+    justify-content: space-between;
+    /* max-width: 97%; */
+    margin: auto;
+    align-items: center;
+    padding: 18px 20px;
+    background: black;
+    color: white;
+   
+}

@@ -1,0 +1,22 @@
+<div style="margin-top: 50px;" class="blog-form">
+    <h4>Add New Blog </h4>
+
+    <form class="form" [formGroup]="addBlogForm">
+        <div class="form-group">
+            <label class="form-label" >UserId</label>
+            <input  type="text"   class="" [formControl]="username" placeholder="Username" >
+        </div>
+        <div class="form-group">
+            <label class="form-label" >Title</label>
+            <input type="text" class="" [formControl]="title" placeholder="Title" >
+        </div>
+        <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea placeholder="Description" [formControl]="description" ></textarea>
+        </div>
+        <div class="form-group">
+            <button type="button" (click)="submitForm()" [disabled]="addBlogForm.invalid" >
+                Submit</button>
+        </div>
+    </form>
+</div>

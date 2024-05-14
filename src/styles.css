@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.form-group{
+    padding: 7px 0px;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+.form-label{
+    display: block;
+    text-align: left;
+    padding: 5px 0px;
+    font-family: sans-serif;
+}
+
+.form-group input, .form-group textarea{
+    width: 100%;
+    margin: 0px;
+    padding: 8px 5px;
+}
+
+button{
+    padding: 9px;
+    border: 0;
+    margin: 0px 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:disabled{
+    background-color: #cddade;
+}
+
+a{
+    color: black;
+}

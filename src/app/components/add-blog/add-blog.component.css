@@ -1,0 +1,21 @@
+.blog-form{
+    max-width: 600px;
+    margin: 14px auto;
+    border: 1px solid lightgray;
+    padding: 12px 0px;
+    text-align: center;
+}
+
+.blog-form h4{
+    font-size: 42px;
+    font-family: sans-serif;
+}
+
+
+button{
+    background: #39a9c8;
+}
+
+button:disabled{
+    background-color: #7bcce2;
+}
