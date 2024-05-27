@@ -1,0 +1,177 @@
+<div class="container-fluid">
+  <div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+      <h4 class="text-themecolor">Add New Invoices
+      </h4>
+    </div>
+    <div class="col-md-7 align-self-center text-end">
+      <div class="d-flex justify-content-end align-items-center">
+        <ol class="breadcrumb justify-content-end">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+          <li class="breadcrumb-item active">Invoices</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <header class="card-header bg-info">
+          <div class="row">
+            <div class="col-md-6 align-self-center">
+              <h4 class="mb-0 text-white">Add New Form</h4>
+            </div>
+            <div class="col-md-6 text-end">
+              <button (click)="this.generateInvoice()"  type="submit" class="generate_invoice btn btn-success">Generate Invoice</button>
+            </div>
+          </div>
+
+        </header>
+        <div class="card-body p-0">
+          <div class="card-body">
+            <form #myForm>
+              <div class="row mb-3">
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="invoiceNumber" class="form-label">Ref Number</label>
+                    <input [(ngModel)]="this.invoice.ref_number" name="ref_number" class="form-control" placeholder="reference Number">
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="invoiceDate" class="form-label">
+                      Invoice Date</label>
+                    <input [(ngModel)]="this.invoice.invoice_date" placeholder="Invoice Date" type="date" name="invoice_date" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="status" class="form-label">Status</label>
+                    <input [(ngModel)]="this.invoice.status" placeholder="Status" name="status" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="customer_name" class="form-label">Customer Name</label>
+                    <input type="text" [(ngModel)]="this.invoice.customer_name"  class="form-control" name="customer_name" 
+                    placeholder="Customer Name">
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="customer_phone" class="form-label">Customer Phone</label>
+                    <input class="form-control" name="customer_phone" [(ngModel)]="this.invoice.customer_phone" placeholder="Customer Phone">
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="clientEmail" class="form-label">Customer Email</label>
+                    <input type="email" [(ngModel)]="this.invoice.customer_email" class="form-control" name="customer_email" placeholder="Customer Email">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="customer_address" name="customer_address" class="form-label">Customer Address</label>
+                    <input name="customer_address" [(ngModel)]="this.invoice.customer_address" class="form-control" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <h5>Invoice Items</h5>
+                </div>
+                <div class="col-md-6 text-end">
+                  <button type="button" class="btn btn-primary" (click)="this.addItem()">
+                    <i class="icon-plus"></i></button>
+                </div>
+              </div>
+
+
+              <!-- Invoice Items -->
+              <div class="mt-2 mb-3">
+
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="invoiceItems">
+                    <thead>
+                      <tr>
+                        <th>Item Name</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of invoice_items">
+                        <td>
+                          <input type="hidden" [value]="item.id" />
+                          <input [value]="item.product" (change)="this.onUpdate('product',item.id,$event)" class="form-control" placeholder="Item">
+                        </td>
+                        <td>
+                          <input (change)="this.onUpdate('quantity',item.id,$event)" [value]="item.quantity"
+                            class="form-control" placeholder="Quantity" />
+                        </td>
+                        <td>
+                          <input (change)="this.onUpdate('price',item.id,$event)" [value]="item.price"
+                            class="form-control" placeholder="Unit Price" />
+                        </td>
+                        <td>
+                          <input [value]="item.total" class="form-control" placeholder="Total" readonly />
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-danger"
+                            (click)="this.removeItem(item.id)">Remove</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Total Calculation -->
+              <div class="row mb-3">
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="subTotal" class="form-label">Subtotal</label>
+                    <input [value]="this.invoice.subtotal" type="number" class="form-control" readonly>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="taxRate" class="form-label">Tax Rate (%)</label>
+                    <input [(ngModel)]="this.invoice.tax" 
+                    (change)="this.calculate()" name="tax" type="number" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="taxAmount" class="form-label">Tax Amount</label>
+                    <input [value]="this.invoice.taxAmount" class="form-control" readonly>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="totalAmount" class="form-label">Total Amount</label>
+                    <input [value]="this.invoice.grandtotal" class="form-control" readonly>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

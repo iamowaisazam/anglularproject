@@ -1,16 +1,27 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { NotfoundComponent } from './components/notfound/notfound.component';
-import { AddBlogComponent } from './components/add-blog/add-blog.component';
-import { HomeComponent } from './components/home/home.component';
-import { BlogViewComponent } from './components/blog-view/blog-view.component';
+// import { InvoiceListComponent } from './invoice-list/invoice-list.component';
+// import { InvoiceCreateComponent } from './invoice-create/invoice-create.component';
+// import { InvoiceEditComponent } from './invoice-edit/invoice-edit.component';
+
+
 
 export const routes: Routes = [
-    {path : 'add-blog', component:AddBlogComponent},
-    {path : 'login', component:LoginComponent},
-    {path : 'register', component:RegisterComponent},
-    {path : 'blog/:id', component:BlogViewComponent },
-    {path : '', component:HomeComponent },
-    {path : '**', component:NotfoundComponent}
+
+            {
+              path:'',
+              loadComponent: () => import('./invoice-list/invoice-list.component').then(m => m.InvoiceListComponent)
+            },
+            {
+              path:'invoices-list',
+              loadComponent: () => import('./invoice-list/invoice-list.component').then(m => m.InvoiceListComponent)
+            },
+            {
+              path:'invoices-create',
+              loadComponent: () => import('./invoice-create/invoice-create.component').then(m => m.InvoiceCreateComponent)
+            },
+            {
+              path:'invoices-edit/:id',
+              loadComponent: () => import('./invoice-edit/invoice-edit.component').then(m => m.InvoiceEditComponent)
+            }
+            
 ];
