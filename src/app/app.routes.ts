@@ -9,19 +9,34 @@ export const routes: Routes = [
 
             {
               path:'',
-              loadComponent: () => import('./invoice-list/invoice-list.component').then(m => m.InvoiceListComponent)
+              loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
             },
             {
-              path:'invoices-list',
-              loadComponent: () => import('./invoice-list/invoice-list.component').then(m => m.InvoiceListComponent)
+              path:'login',
+              loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
             },
             {
-              path:'invoices-create',
-              loadComponent: () => import('./invoice-create/invoice-create.component').then(m => m.InvoiceCreateComponent)
+              path:'admin',
+              loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent),
+              children:[
+                  {
+                    path:'',
+                    loadComponent: () => import('./admin/invoices/invoice-list/invoice-list.component').then(m => m.InvoiceListComponent)
+                  },
+                  {
+                    path:'invoices-list',
+                    loadComponent: () => import('./admin/invoices/invoice-list/invoice-list.component').then(m => m.InvoiceListComponent)
+                  },
+                  {
+                    path:'invoices-create',
+                    loadComponent: () => import('./admin/invoices/invoice-create/invoice-create.component').then(m => m.InvoiceCreateComponent)
+                  },
+                  {
+                    path:'invoices-edit/:id',
+                    loadComponent: () => import('./admin/invoices/invoice-edit/invoice-edit.component').then(m => m.InvoiceEditComponent)
+                  }
+              ]
             },
-            {
-              path:'invoices-edit/:id',
-              loadComponent: () => import('./invoice-edit/invoice-edit.component').then(m => m.InvoiceEditComponent)
-            }
+            
             
 ];

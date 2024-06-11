@@ -46,7 +46,7 @@
                                                 <td>{{ item.customer_name }}</td> 
                                                 <td>{{ item.grandtotal.toFixed() }}</td> 
                                                 <td class="hidden-phone">
-                                                    <a [routerLink]="['/invoices-edit',item.id]" 
+                                                    <a [routerLink]="['/admin/invoices-edit',item.id]" 
                                                     class="btn btn-success" >Edit</a>
                                                     <button (click)="this.delete(item.id)" class="btn btn-danger" >Delete</button>
                                                 </td>
