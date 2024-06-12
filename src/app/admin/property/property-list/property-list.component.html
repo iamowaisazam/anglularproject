@@ -1,0 +1,67 @@
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">All Property 
+        </h4>
+        
+    </div>
+    <div class="col-md-7 align-self-center text-end">
+        <div class="d-flex justify-content-end align-items-center">
+            <ol class="breadcrumb justify-content-end">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Property</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <header class="card-header bg-info" style="display: flex; justify-content: space-between;">
+                <h4 class="mb-0 text-white">All Property List</h4>
+                <a type="button" href="/admin/property-create" class="btn btn-primary text-white">Add Files</a>
+            </header>
+            <div class="card-body p-0">    
+                <div class="table-responsive ">
+                    <table id="example23" class="mydatatable display nowrap table table-hover table-striped border" cellspacing="0" width="100%">
+                            <thead>
+                                <tr class="" >
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Ref Number</th>
+                                    <th>Status</th>
+                                    <th>Customer Name</th>
+                                    <th>Total</th>
+                                    <th class="hidden-phone">Action</th>
+                                </tr>
+                             </thead>
+                            <tbody>
+                                @if(invoices.length > 0){
+                                
+
+                                    @for (item of invoices; track item) {
+                                        <tr>
+                                            <td>{{item.id}}</td> 
+                                            <td>{{ item.invoice_date }}</td> 
+                                            <td>{{ item.ref_number }}</td>
+                                            <td>{{ item.status }}</td> 
+                                            <td>{{ item.customer_name }}</td> 
+                                            <td>{{ item.grandtotal.toFixed() }}</td> 
+                                            <td class="hidden-phone">
+                                                <a [routerLink]="['/admin/property-edit',item.id]" 
+                                                class="btn btn-success" >Edit</a>
+                                                <button (click)="this.delete(item.id)" class="btn btn-danger" >Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }@else{
+                                    <p>loading</p>
+                                }
+                              
+                            </tbody>
+                   </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

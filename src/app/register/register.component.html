@@ -1,0 +1,63 @@
+<section id="wrapper">
+    <div class="login-register" 
+    style="background-image:url(https://www.irhawears.com/public/admin/assets/images/background/login-register.jpg);">
+        <div class="login-box card">
+            <div class="card-body">
+                <form method="post" class="form-horizontal form-material" id="registerform" action="https://www.irhawears.com/admin/register_submit">
+                    <input type="hidden" name="_token" value="Q3XmKdyghzfBaIRAHmn9hfIwlzROo57UabhyeD61">                        
+                    <h3 class="text-center m-b-20">Create an Account</h3>
+                    <div class="form-group text-center">
+                        <div class="col-xs-12 p-b-20">
+                            <div class="g-signin2" data-onsuccess="onSignIn" style="display: none;"></div>
+                            <button type="button" class="google-btn" onclick="googleSignIn()">
+                                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" name="first_name" type="text" required="" placeholder="First Name"> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" name="last_name" type="text" required="" placeholder="Last Name"> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" name="email" type="email" required="" placeholder="Email"> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" name="password" type="password" required="" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" name="confirm_password" type="password" required="" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-xs-12 p-b-20">
+                            <button type="submit" class="btn w-100 btn-lg btn-info btn-rounded text-white">Create Account</button>
+                        </div>
+                    </div>
+                    <div class="additional-links">
+                        <div class="form-group text-left">
+                            <div class="col-xs-12 p-b-20">
+                                <a href="/forgot" class="btn btn-light btn-rounded">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <div class="col-xs-12 p-b-20">
+                                <a href="/login" class="btn btn-light btn-rounded">Sign In</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

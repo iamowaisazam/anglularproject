@@ -28587,6 +28587,7 @@ Fixed -Header
 
 .fixed-layout .page-wrapper {
   padding-top: 67px;
+  margin-left: 200px;
 }
 
 /*******************
@@ -30225,5 +30226,5 @@ File: scss
 }
 
 .page-wrapper {
-  margin-left: 0px;
+  margin-left: 220px;
 }
